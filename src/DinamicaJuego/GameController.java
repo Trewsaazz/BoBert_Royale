@@ -231,7 +231,7 @@ public class GameController {
                 //Hace una defensa si la habildad cura
         		}else if(resultado instanceof Defensa) {
         			System.out.println(atacante + " se cura: " + resultado.accion(atacante) );
-            		atacante.setVida(atacante.getVida() + resultado.accion(atacante));
+        			atacante.setVida(atacante.getVida() + resultado.accion(atacante));
         		}
         		
         		if(resultado instanceof CambiadorDeEstados) {

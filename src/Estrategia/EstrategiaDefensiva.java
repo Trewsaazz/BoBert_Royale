@@ -13,7 +13,17 @@ public class EstrategiaDefensiva implements IEstrategia{
 	public int DecidirAccion(Enemigo enemigo, Enemigo jugador) {
 		int numero = numRandom.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
 		
-		if(numero <= 25) {
+		if(enemigo.getVida() >= 100) {
+			if(numero <= 70) {
+			return 1;
+			
+		}else {
+			
+			return 3;
+		}
+	}
+		
+		if(numero <= 30) {
 			return 1;
 		}else if(numero <= 70) {
 			return 2;

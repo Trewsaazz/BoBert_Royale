@@ -140,7 +140,13 @@ public abstract class Enemigo {
 		return vida;
 	}
 	public void setVida(int vida) {
-		this.vida = vida;
+		if(vida > 100) {
+			this.vida = 100;
+		} else if(vida < 0) {
+			this.vida = 0;
+		}else {
+			this.vida = vida;
+		}
 	}
 	
 	public void setEstado(Estado E) {
@@ -148,8 +154,10 @@ public abstract class Enemigo {
 	}
 	
 	public void quitarVidaSimple(int v) {
-		vida = vida-v;
+		setVida(this.vida - v);
 	}
+	
+	
 	
 	public IEstrategia getEstrategia() {
 		return estrategia;

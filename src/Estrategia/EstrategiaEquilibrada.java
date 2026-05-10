@@ -14,6 +14,16 @@ public class EstrategiaEquilibrada implements IEstrategia{
 	public int DecidirAccion(Enemigo enemigo, Enemigo jugador) {
 		int numero = numRandom.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
 		
+		if(enemigo.getVida() >= 100) {
+			if(numero <= 65) {
+			return 1;
+			
+		}else {
+			
+			return 3;
+		}
+	}
+		
 		if(numero <= 50) {
 			return 1;
 		}else if(numero <= 80) {

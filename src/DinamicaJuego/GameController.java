@@ -8,6 +8,9 @@ import Personajes.FabricaMedieval;
 import Personajes.Tipo;
 
 import java.util.Scanner;
+
+import Acciones.*;
+
 import java.util.Random;
 
 public class GameController {
@@ -126,17 +129,19 @@ public class GameController {
         //Rondas del Combate
         while(enCombate && jugador.getVida() > 0 && enemigoActual.getVida() > 0) {
         	
+        	int decision;
         	if (turnoJugador) {
         		System.out.println("\nTu turno");
-        		//Necesitamos una manera de mandar la accion que toma el jugador a Turno
-        		Turno(turnoJugador, accion);
+        		System.out.println("1-.Atacar\n2-.Defender\n3-.Habilidad");
+        		decision = scanner.nextInt();
+        		Turno(turnoJugador, decision);
         		if(enemigoActual.getVida()<=0) {
         			enCombate = false;
         		}
         	}else {
         		System.out.println("\nTurno Enemigo");
-        		//Necesitamos una manera de mandar la accion que toma el enemigo a Turno
-        		Turno(turnoJugador, accion);
+        		decision = (rand.nextInt(3) +1);
+        		Turno(turnoJugador, decision);
         		if(jugador.getVida()<=0) {
         			enCombate = false;
         		}
@@ -156,37 +161,47 @@ public class GameController {
     }
     
     
-    public void Turno(boolean esPC, Accion accion){
+    public void Turno(boolean esPC, int decision){
     	CalcDanio calculador = CalcDanio.getInstance();
     	
     	Enemigo atacante = esPC ? jugador : enemigoActual;
         Enemigo defensor = esPC ? enemigoActual : jugador;
         
         
-        switch(accion.getTipo()) {
+        switch(decision) {
         	//hace daño al oponente 
-        	case ATACAR:
+        	case 1:
         		//calcula el daño gracias al singleton
-        		int dmg = calculador.calc(atacante.getFuerza(), defensor.getResistencia());
-        		defensor.quitarVida(dmg);
+        		Accion accion = new Ataque();
+        		if(atacante.getFuerza() >=70) {
+        			
+        			accion = new Poderoso(accion);
+        		}else if(atacante.getFuerza() <= 30){
+        			
+        			accion = new Debil(accion);
+        		}
+        		int dmg = calculador.calc(accion.accion(atacante), defensor.getResistencia());
+        		
+        		//defensor.setVida(defensor.getVida() - dmg);
         		System.out.println(atacante + " ataca y causa " + dmg + " de daño.");
                 System.out.println(defensor + " tiene " + defensor.getVida() + " de vida restante.");
                 break;
             //Se de fiende para el proximo turno
-        	case DEFENDER:
-        		//ahora mismo no hace nada
+        	case 2:
+        		Accion action = new Defensa();
+        		if(atacante.getResistencia() >=70) {
+        			
+        			action = new Poderoso(action);
+        		}else if(atacante.getResistencia() <= 30){
+        			
+        			action = new Debil(action);
+        		}
         		System.out.println(atacante + " se defiende. Reduce el daño recibido hasta el próximo turno.");
         		break;
         	//Usa una habilida propia de la clase
-        	case HABILIDAD:
-        		//todavia no se ha implementado como hacemos las habilidades
-                break;
-            //Cura al Personaje
-        	case DESCANSAR:
-        		//como lo tengo estructurado no puedo acceder al descansar de los Personajes
-        		int cura = 10;
-        		atacante.setVida(atacante.getVida() + cura);
-        		System.out.println(atacante + " descansa y recupera " + cura + " de vida.");
+        	case 3:
+        		
+        		atacante.habilidad();
                 break;
         }
         

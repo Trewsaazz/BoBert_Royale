@@ -3,6 +3,8 @@ package Personajes;
 import java.util.Random;
 import java.util.Scanner;
 
+import Acciones.*;
+
 public abstract class Enemigo {
 
 	
@@ -10,7 +12,8 @@ public abstract class Enemigo {
 	private int fuerza;
 	private int resistencia;
 	private int agilidad;
-	private int vida = 100;
+	private int vida;
+	private Accion acciones;
 	
 Scanner sc = new Scanner(System.in);
 	
@@ -19,28 +22,30 @@ Scanner sc = new Scanner(System.in);
 		if(creacion == Tipo.Jugador) {
 			
 			System.out.println("Cual es tu fuerza?");
-			setFuerza(sc.nextInt());
+			this.fuerza = sc.nextInt();
 			
 			System.out.println("Cual es tu agilidad?");
-			setAgilidad(sc.nextInt());
+			this.agilidad = sc.nextInt();
 			
 			System.out.println("Cual es tu resistencia?");
-			setResistencia(sc.nextInt());
+			this. resistencia = sc.nextInt();
 			
 		}else if(creacion == Tipo.Enemigo) {
 			
 			Random r = new Random();
 			
-			setFuerza(r.nextInt(80) + 20);
+			this.fuerza = r.nextInt(80) + 20;
 			
-			setAgilidad(r.nextInt(80) + 20);
+			this.agilidad = r.nextInt(80) + 20;
 			
-			setResistencia(r.nextInt(80) + 20);
+			this.resistencia = r.nextInt(80) + 20;
 			
 		}else {
 			
 			System.out.println("Tipo de creacion desconocido");
 		}
+		
+		this.vida = 100;
 		
 	}
 	
@@ -48,12 +53,8 @@ Scanner sc = new Scanner(System.in);
 		
 		System.out.println("No tienes habilidades especiales");
 	}
-	public void atacar() {
-		
-		System.out.println("He atacado al enemigo");
-	}
 
-	public void descansar() {
+	/*public void descansar() {
 		
 		Random r = new Random();
 		System.out.println("Has descansado");
@@ -65,7 +66,7 @@ Scanner sc = new Scanner(System.in);
 			System.out.println("Te has curado 10 pts de vida.");
 		}
 	}
-	
+	*/
 	
 	public int getFuerza() {
 		

@@ -3,6 +3,10 @@ package Personajes;
 import java.util.Random;
 import java.util.Scanner;
 
+import EstadosPersonajes.*;
+
+import Estrategia.*;
+
 public abstract class Enemigo {
 
 	
@@ -12,11 +16,18 @@ public abstract class Enemigo {
 	private int agilidad;
 	private int vida = 100;
 	
+	private Estado estado;
+	private IEstrategia estrategia;
+	
+	
+	
 Scanner sc = new Scanner(System.in);
 	
 	public Enemigo(Tipo creacion) {
 		
 		if(creacion == Tipo.Jugador) {
+			
+			estado = new Normal();
 			
 			System.out.println("Cual es tu fuerza?");
 			setFuerza(sc.nextInt());
@@ -30,6 +41,8 @@ Scanner sc = new Scanner(System.in);
 		}else if(creacion == Tipo.Enemigo) {
 			
 			Random r = new Random();
+			
+			estado = new Normal();
 			
 			setFuerza(r.nextInt(80) + 20);
 			
@@ -96,6 +109,10 @@ Scanner sc = new Scanner(System.in);
 	}
 	public void setVida(int vida) {
 		this.vida = vida;
+	}
+	
+	public void setEstado(Estado E) {
+		this.estado = E;
 	}
 	
 }

@@ -131,14 +131,23 @@ public class GameController {
         	
         	int decision;
         	if (turnoJugador) {
-        		System.out.println("\nTu turno");
-        		System.out.println("1-.Atacar\n2-.Defender\n3-.Habilidad");
-        		decision = scanner.nextInt();
-        		Turno(turnoJugador, decision);
+        		jugador.getEstado().alIniciarTurno(jugador);
+        		if(jugador.getEstado().puedeActuar() == true) {
+	        		System.out.println("\nTu turno");
+	        		System.out.println("1-.Atacar\n2-.Defender\n3-.Habilidad");
+	        		decision = scanner.nextInt();
+	        		Turno(turnoJugador, decision);
+	        		
+        		}else {
+        			System.out.println("Estas "+jugador.getEstado().toString()+"no has podido atacar!");
+        		}
+        		
         		if(enemigoActual.getVida()<=0) {
         			enCombate = false;
         		}
+        		
         	}else {
+        		
         		System.out.println("\nTurno Enemigo");
         		decision = (rand.nextInt(3) +1);
         		Turno(turnoJugador, decision);

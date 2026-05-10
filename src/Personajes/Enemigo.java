@@ -9,7 +9,7 @@ import Acciones.*;
 import EstadosPersonajes.*;
 
 import Estrategia.*;
->>>>>>> branch 'main' of https://github.com/Trewsaazz/BoBert_Royale.git
+
 
 public abstract class Enemigo {
 
@@ -47,9 +47,9 @@ Scanner sc = new Scanner(System.in);
 			
 			Random r = new Random();
 			
-<<<<<<< HEAD
+
 			this.fuerza = r.nextInt(80) + 20;
-=======
+
 			estado = new Normal();
 			
 			setFuerza(r.nextInt(80) + 20);
@@ -72,27 +72,20 @@ Scanner sc = new Scanner(System.in);
 		
 		System.out.println("No tienes habilidades especiales");
 	}
-<<<<<<< HEAD
-=======
-	public void atacar() {
-		
-		estado.alIniciarTurno(this);
-		if(estado.puedeActuar()== true) {
-			System.out.println("Atacando"); //añadir funcion de atacar
-		}
-	}
->>>>>>> branch 'main' of https://github.com/Trewsaazz/BoBert_Royale.git
 
-<<<<<<< HEAD
+	public Estado getEstado() {
+		return estado;
+	}
+
 	/*public void descansar() {
-=======
+
 	public void quitarVidaSimple(int i){
 	
 		vida = vida-i;
 	}
 	
 	public void descansar() {
->>>>>>> branch 'main' of https://github.com/Trewsaazz/BoBert_Royale.git
+
 		
 		Random r = new Random();
 		System.out.println("Has descansado");
@@ -139,6 +132,10 @@ Scanner sc = new Scanner(System.in);
 	
 	public void setEstado(Estado E) {
 		this.estado = E;
+	}
+	
+	public void quitarVidaSimple(int v) {
+		vida = vida-v;
 	}
 	
 }

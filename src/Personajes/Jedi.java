@@ -1,26 +1,15 @@
 package Personajes;
 
 import java.util.Random;
-import java.util.Scanner;
 
-public class Jedi extends Enemigo implements Hechicero{
+public class Jedi extends Enemigo{
 
-Scanner sc = new Scanner(System.in);
-	
-	public Jedi() {
-		
-		System.out.println("Cual es tu fuerza?");
-		setFuerza(sc.nextInt());
-		
-		System.out.println("Cual es tu agilidad?");
-		setAgilidad(sc.nextInt());
-		
-		System.out.println("Cual es tu resistencia?");
-		setResistencia(sc.nextInt());
+	public Jedi(Tipo creacion) {
+		super(creacion);
 	}
 
 	@Override
-	public void hechizo() {
+	public void habilidad() {
 		
 		Random r = new Random();
 		System.out.println("Has soltado laseres por las manos");
@@ -32,25 +21,5 @@ Scanner sc = new Scanner(System.in);
 			System.out.println("Has fallado, apunta mejor");
 		}
 		
-	}
-	
-	@Override
-	public void atacar() {
-			
-		System.out.println("He atacado al enemigo");
-	}
-
-	@Override
-	public void descansar() {
-		
-		Random r = new Random();
-		System.out.println("Has descansado");
-		if((r.nextInt(3) +1) != 1) {
-			
-			System.out.println("No ha ocurrido nada");
-		}else {
-			
-			System.out.println("Te has curado 10 pts de vida.");
-		}
 	}
 }

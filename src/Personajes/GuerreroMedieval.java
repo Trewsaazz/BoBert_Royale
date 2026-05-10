@@ -1,47 +1,16 @@
 package Personajes;
 
-import java.util.Random;
-import java.util.Scanner;
 
-public class GuerreroMedieval extends Enemigo implements Guerrero{
+public class GuerreroMedieval extends Enemigo{
 	
-	Scanner sc = new Scanner(System.in);
-	
-	public GuerreroMedieval() {
-		
-		System.out.println("Cual es tu fuerza?");
-		setFuerza(sc.nextInt());
-		
-		System.out.println("Cual es tu agilidad?");
-		setAgilidad(sc.nextInt());
-		
-		System.out.println("Cual es tu resistencia?");
-		setResistencia(sc.nextInt());
+	public GuerreroMedieval(Tipo creacion) {
+		super(creacion);
 	}
+
 	@Override
-	public void guerrilla() {
+	public void habilidad() {
 		
 		System.out.println("Has usado la espada de acero para atacar quitando" /* + espada.getDaño()
 			*/ + " puntos de vida");
-	}
-
-	@Override
-	public void atacar() {
-		
-		System.out.println("He atacado al enemigo");
-	}
-
-	@Override
-	public void descansar() {
-		
-		Random r = new Random();
-		System.out.println("Has descansado");
-		if((r.nextInt(3) +1) != 1) {
-			
-			System.out.println("No ha ocurrido nada");
-		}else {
-			
-			System.out.println("Te has curado 10 pts de vida.");
-		}
 	}
 }

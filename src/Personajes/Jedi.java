@@ -40,6 +40,6 @@ public class Jedi extends Enemigo{
 	@Override
 	public String toString() {
 		
-		return tipoEnemigo.toString() + "del mundo " + mundo.toString() + ".\n";
+		return tipoEnemigo.toString() + " del mundo " + mundo.toString() + ".\n";
 	}
 }

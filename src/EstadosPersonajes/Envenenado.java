@@ -6,7 +6,7 @@ public class Envenenado implements Estado{
 	int turnosRestantes = 3;
 	
 	public void alIniciarTurno(Enemigo p) {
-		p.recibirDano(3);  // pierde 3 de vida por el veneno
+		p.quitarVidaSimple(3);  // pierde 3 de vida por el veneno
         turnosRestantes--;
         if (turnosRestantes <= 0) {
             p.setEstado(new Normal());  //cambia de estado

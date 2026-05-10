@@ -69,6 +69,11 @@ Scanner sc = new Scanner(System.in);
 		}
 	}
 
+	public void quitarVidaSimple(int i){
+	
+		vida = vida-i;
+	}
+	
 	public void descansar() {
 		
 		Random r = new Random();

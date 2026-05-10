@@ -16,6 +16,7 @@ public class GameController {
     private FabricaEnemigos fabrica;
     private String mundoActual;
     private boolean enCombate;
+    private int puntos;
     private Scanner scanner;
     
     public GameController() {
@@ -31,6 +32,7 @@ public class GameController {
         System.out.println("\nElige un mundo: \n1-Charca\n2-Medieval\n3-Espacio");
         int opcMundo = scanner.nextInt();
         scanner.nextLine();
+        //Seleccion de tu clase
         System.out.println("\nElige tu Clase: \n1-Guerrero\n2-Hechizero\n3-Mutante");
         int opcClase = scanner.nextInt();
 		scanner.nextLine();
@@ -56,6 +58,7 @@ public class GameController {
         		fabrica = new FabricaMedieval();
         }
         
+        //te crea tu player segun tu clase y tu mundo
         switch (opcClase) {
 	        case 0:
 	            enemigoActual = fabrica.crearGuerrero(Tipo.Jugador);
@@ -111,7 +114,7 @@ public class GameController {
     	
     	if(jugador.getAgilidad() > enemigoActual.getAgilidad() && iniciativa >= 30) {
     		turnoJugador = true;
-    	}else if(jugador.getAgilidad() > enemigoActual.getAgilidad() && iniciativa <= 30) {
+    	}else if(jugador.getAgilidad() <= enemigoActual.getAgilidad() && iniciativa <= 30) {
     		turnoJugador = true;
     	}else {
     		turnoJugador = false;
@@ -146,7 +149,7 @@ public class GameController {
         	finPartida();
         }else {
         	int puntosGanados = 10;
-            jugador.acumularPuntos(puntosGanados);
+            puntos += puntosGanados;
             System.out.println("\n¡Has ganado el combate!");
             Combate();
         }
@@ -200,7 +203,7 @@ public class GameController {
     
     public void finPartida() {
         System.out.println("\n--- GAME OVER ---");
-        System.out.println("Puntuación final: " + jugador.getPuntos());
+        System.out.println("Puntuación final: " + puntos);
         System.out.println("Gracias por jugar.");
         System.exit(0);
     }

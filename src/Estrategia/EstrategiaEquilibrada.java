@@ -9,13 +9,13 @@ public class EstrategiaEquilibrada implements IEstrategia{
 	
 	@Override
 	public Accion elegirAccion(Enemigo enemigo, Jugador jugador) {
-		int numero = random.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
+		int numRandom = random.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
 		
-		if(numero <= 50) {
+		if(numRandom <= 50) {
 			return new Atacar();
-		}else if(numero <= 25) {
+		}else if(numRandom <= 80) {
 			return new Defender();
-		}else if(numero <= 25) {
+		}else {
 			return new Curarse();
 		}
 	}

@@ -12,7 +12,7 @@ public class EstrategiaAgresiva implements IEstrategia{
 		
 		if(numero <= 70) {
 			return new Atacar();
-		}else if(numero <= 30) {
+		}else {
 			return new Defender();
 		}
 	}

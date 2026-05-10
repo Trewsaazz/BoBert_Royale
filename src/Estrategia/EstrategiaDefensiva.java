@@ -10,11 +10,11 @@ public class EstrategiaDefensiva implements IEstrategia{
 	public Accion elegirAccion(Enemigo enemigo, Jugador jugador) {
 		int numero = random.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
 		
-		if(numero <= 50) {
-			return new Defender();
-		}else if(numero <= 30) {
+		if(numero <= 25) {
 			return new Atacar();
-		}else if(numero <= 20) {
+		}else if(numero <= 75) {
+			return new Defender();
+		}else {
 			return new Curarse();
 		}
 	}

@@ -123,6 +123,10 @@ public class GameController {
         //Rondas del Combate
         while(enCombate && jugador.getVida() > 0 && enemigoActual.getVida() > 0) {
         	
+
+            System.out.println("\nTu tienes " + jugador.getVida() + " de vida restante.");
+            System.out.println(enemigoActual + " tiene " + enemigoActual.getVida() + " de vida restante.");
+        	
         	int decision;
         	if (turnoJugador) {
         		jugador.getEstado().alIniciarTurno(jugador);
@@ -185,9 +189,9 @@ public class GameController {
         		}
         		int dmg = calculador.calc(accion.accion(atacante), defensor.getResistencia());
         		
-        		//defensor.setVida(defensor.getVida() - dmg);
+        		defensor.setVida(defensor.getVida() - dmg);
+        		
         		System.out.println(atacante + " ataca y causa " + dmg + " de daño.");
-                System.out.println(defensor + " tiene " + defensor.getVida() + " de vida restante.");
                 break;
             //Se de fiende para el proximo turno
         	case 2:
@@ -199,14 +203,30 @@ public class GameController {
         			
         			action = new Debil(action);
         		}
-        		System.out.println(atacante + " se defiende. Reduce el daño recibido hasta el próximo turno.");
+        		System.out.println(atacante + " se cura: " + action.accion(atacante) );
+        		atacante.setVida(atacante.getVida() + action.accion(atacante));
         		break;
         	//Usa una habilidad propia de la clase
         	case 3:
         		Accion resultado;
         		
         		resultado = atacante.habilidad();
-        		//TODO Luis tienes que hacer que ataque cuando sea un ataque y defienda cuando sea defensa
+        		
+        		//hace un ataque si la habilidad proporciona un ataque
+        		if(resultado instanceof Ataque) {
+        			int danio = calculador.calc(resultado.accion(atacante), defensor.getResistencia());
+            		
+            		defensor.setVida(defensor.getVida() - danio);
+            		
+            		System.out.println(atacante + " ataca y causa " + danio + " de daño.");
+                    System.out.println(defensor + " tiene " + defensor.getVida() + " de vida restante.");
+        		
+                //Hace una defensa si la habildad cura
+        		}else if(resultado instanceof Defensa) {
+        			System.out.println(atacante + " se cura: " + resultado.accion(atacante) );
+            		atacante.setVida(atacante.getVida() + resultado.accion(atacante));
+        		}
+        		
         		if(resultado instanceof CambiadorDeEstados) {
         			
         			if(atacante instanceof HechiceroMedieval) {
@@ -218,10 +238,16 @@ public class GameController {
         			}
         		}else if(resultado == null) {
         			
-        			if(atacante instanceof MutanteEspacial || atacante instanceof MutanteMedieval
-        					||atacante instanceof MutanteChorreante) {
-        				
-        				//TODO Luis aqui haz que el atacante se convierta en guerrero 
+        			if(atacante instanceof MutanteEspacial || atacante instanceof MutanteMedieval ||atacante instanceof MutanteChorreante) {
+        				//la habilidad hace que cambi de clase
+        				Random cambio = new Random();
+        		    	int prop  = cambio.nextInt(100) + 1;
+        		    	if(prop> 50) {
+        		    		enemigoActual = fabrica.crearGuerrero(Tipo.Enemigo);
+        		    	}else {
+        		    		enemigoActual = fabrica.crearHechicero(Tipo.Enemigo);
+        		    	}
+        				 
         			}
         		}
                 break;

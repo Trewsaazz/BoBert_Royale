@@ -2,10 +2,10 @@ package EstadosPersonajes;
 
 import Personajes.Enemigo;
 
-public class Quemado {
+public class Quemado implements Estado{
 	int turnosRestantes = 3;
 	public void alIniciarTurno(Enemigo p) {
-		p.recibirDano(7);  // pierde 5 de vida por la quemadura
+		p.quitarVidaSimple(7);  // pierde 5 de vida por la quemadura
         turnosRestantes--;
         if (turnosRestantes <= 0) {
             p.setEstado(new Normal());  //cambia de estado

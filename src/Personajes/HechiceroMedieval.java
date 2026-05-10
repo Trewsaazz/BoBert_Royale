@@ -2,10 +2,13 @@ package Personajes;
 
 import java.util.Random;
 
+import Estrategia.EstrategiaDefensiva;
+
 public class HechiceroMedieval extends Enemigo{
 
 	public HechiceroMedieval(Tipo creacion) {
 		super(creacion);
+		estrategia = new EstrategiaDefensiva();
 	}
 
 	@Override

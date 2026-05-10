@@ -1,7 +1,7 @@
 package Estrategia;
 
 import java.util.Random;
-
+/* Faltan imports */
 public class EstrategiaEquilibrada implements IEstrategia{
 	
 	

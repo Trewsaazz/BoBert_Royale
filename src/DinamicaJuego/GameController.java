@@ -145,10 +145,15 @@ public class GameController {
         		}
         		
         	}else {
+        		enemigoActual.getEstado().alIniciarTurno(jugador);
+        		if(enemigoActual.getEstado().puedeActuar() == true) {
         		
         		System.out.println("\nTurno Enemigo");
-        		decision = enemigoActual.decidirSiguienteAccion(jugador);
+        		decision = (rand.nextInt(3) +1);
         		Turno(turnoJugador, decision);
+        		}else {
+        			System.out.println("Estas "+enemigoActual.getEstado().toString()+"no has podido atacar!");
+        		}
         		if(jugador.getVida()<=0) {
         			enCombate = false;
         		}
@@ -247,6 +252,7 @@ public class GameController {
         		    	}else {
         		    		enemigoActual = fabrica.crearHechicero(Tipo.Enemigo);
         		    	}
+        		    	enemigoActual.setEstado(new Paralizado());
         				 
         			}
         		}

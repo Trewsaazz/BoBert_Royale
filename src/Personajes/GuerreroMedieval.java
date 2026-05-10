@@ -1,5 +1,6 @@
 package Personajes;
 
+import Acciones.*;
 import Estrategia.EstrategiaEquilibrada;
 
 public class GuerreroMedieval extends Enemigo{
@@ -10,9 +11,11 @@ public class GuerreroMedieval extends Enemigo{
 	}
 
 	@Override
-	public void habilidad() {
+	public Accion habilidad(){
 		
-		System.out.println("Has usado la espada de acero para atacar quitando" /* + espada.getDaño()
-			*/ + " puntos de vida");
+		System.out.println("Has usado la espada de acero.");
+		Accion action = new Ataque();
+		action = new Poderoso(action);
+		return action;
 	}
 }

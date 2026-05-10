@@ -1,14 +1,16 @@
 package Acciones;
 
+import EstadosPersonajes.Paralizado;
 import Personajes.Enemigo;
 
-public class Defensa implements Accion{
+public class CambiadorDeEstados implements Accion{
 
 	@Override
 	public int accion(Enemigo enemy) {
 		
-		return 10; //numero de puntos que cura;
+		return 0;
 	}
 
+	
 	
 }

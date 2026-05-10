@@ -1,5 +1,6 @@
 package Personajes;
 
+import Acciones.*;
 import Estrategia.EstrategiaEquilibrada;
 
 public class GuerreroChorreante extends Enemigo{
@@ -10,9 +11,11 @@ public class GuerreroChorreante extends Enemigo{
 	}
 
 	@Override
-	public void habilidad() {
+	public Accion habilidad() {
 		
-		System.out.println("Has usado la espada de lotus para atacar quitando" /* + espadaL.getDaño()
-			*/ + " puntos de vida");
+		System.out.println("Has usado la espada de lotus.");
+		Accion action = new Ataque();
+		action = new Debil(action);
+		return action;
 	}
 }

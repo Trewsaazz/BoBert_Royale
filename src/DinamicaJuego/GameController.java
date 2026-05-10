@@ -1,14 +1,8 @@
 package DinamicaJuego;
 
-import Personajes.Enemigo;
-import Personajes.FabricaCharca;
-import Personajes.FabricaEnemigos;
-import Personajes.FabricaEspacial;
-import Personajes.FabricaMedieval;
-import Personajes.Tipo;
-
+import Personajes.*;
 import java.util.Scanner;
-
+import EstadosPersonajes.*;
 import Acciones.*;
 
 import java.util.Random;
@@ -207,10 +201,29 @@ public class GameController {
         		}
         		System.out.println(atacante + " se defiende. Reduce el daño recibido hasta el próximo turno.");
         		break;
-        	//Usa una habilida propia de la clase
+        	//Usa una habilidad propia de la clase
         	case 3:
+        		Accion resultado;
         		
-        		atacante.habilidad();
+        		resultado = atacante.habilidad();
+        		//TODO Luis tienes que hacer que ataque cuando sea un ataque y defienda cuando sea defensa
+        		if(resultado instanceof CambiadorDeEstados) {
+        			
+        			if(atacante instanceof HechiceroMedieval) {
+        				
+        				defensor.setEstado(new Quemado());
+        			}else if(atacante instanceof Jedi) {
+        				
+        				defensor.setEstado(new Paralizado());
+        			}
+        		}else if(resultado == null) {
+        			
+        			if(atacante instanceof MutanteEspacial || atacante instanceof MutanteMedieval
+        					||atacante instanceof MutanteChorreante) {
+        				
+        				//TODO Luis aqui haz que el atacante se convierta en guerrero 
+        			}
+        		}
                 break;
         }
         

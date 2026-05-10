@@ -3,9 +3,7 @@ package Personajes;
 import java.util.Random;
 import java.util.Scanner;
 
-<<<<<<< HEAD
 import Acciones.*;
-=======
 import EstadosPersonajes.*;
 
 import Estrategia.*;
@@ -13,20 +11,18 @@ import Estrategia.*;
 
 public abstract class Enemigo {
 
-	
-	
 	private int fuerza;
 	private int resistencia;
 	private int agilidad;
 	private int vida;
 	private Accion acciones;
-	
+
 	private Estado estado;
 	IEstrategia estrategia;
 	
 	
 	
-Scanner sc = new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
 	
 	public Enemigo(Tipo creacion) {
 		
@@ -53,7 +49,6 @@ Scanner sc = new Scanner(System.in);
 			estado = new Normal();
 			
 			setFuerza(r.nextInt(80) + 20);
->>>>>>> branch 'main' of https://github.com/Trewsaazz/BoBert_Royale.git
 			
 			this.agilidad = r.nextInt(80) + 20;
 			
@@ -68,9 +63,10 @@ Scanner sc = new Scanner(System.in);
 		
 	}
 	
-	public void habilidad() {
+	public Accion habilidad() {
 		
 		System.out.println("No tienes habilidades especiales");
+		return null;
 	}
 
 	public Estado getEstado() {

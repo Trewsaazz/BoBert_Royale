@@ -2,6 +2,7 @@ package Personajes;
 
 import java.util.Random;
 
+import Acciones.*;
 import Estrategia.EstrategiaDefensiva;
 
 public class HechiceroChorreante extends Enemigo{
@@ -12,17 +13,22 @@ public class HechiceroChorreante extends Enemigo{
 	}
 
 	@Override
-	public void habilidad() {
+	public Accion habilidad() {
 		
 		Random r = new Random();
+		Accion action = new Defensa();
+		
 		System.out.println("Te has comido una tarta de queso");
-		if((r.nextInt(4) +1) != 1) { //esto podria depender del atributo de fuerza o algo
+		if((r.nextInt(4) +1) != 1) { 
 			
-			System.out.println("Te has curado 5 puntos de vida");
+			System.out.println("Te has curado 15 puntos de vida");
+			action = new Poderoso(action);
 		}else {
 			
 			System.out.println("Eres intolerante a la lactosa");
+			action = null;
 		}
 		
+		return action;
 	}
 }

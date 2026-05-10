@@ -1,5 +1,6 @@
 package Personajes;
 
+import Acciones.*;
 import Estrategia.EstrategiaEquilibrada;
 
 public class GuerreroEspacial extends Enemigo{
@@ -10,9 +11,11 @@ public class GuerreroEspacial extends Enemigo{
 	}
 
 	@Override
-	public void habilidad() {
+	public Accion habilidad() {
 		
-		System.out.println("Has usado la espada laser para atacar quitando" /* + espadaLa.getDaño()
-			*/ + " puntos de vida");
+		System.out.println("Has usado la espada laser");
+		Accion action = new Ataque();
+		action = new Poderoso(action);
+		return action;
 	}
 }

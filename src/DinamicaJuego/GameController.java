@@ -250,11 +250,11 @@ public class GameController {
         				Random cambio = new Random();
         		    	int prop  = cambio.nextInt(100) + 1;
         		    	if(prop> 50) {
-        		    		enemigoActual = fabrica.crearGuerrero(Tipo.Enemigo);
+        		    		atacante = fabrica.crearGuerrero(Tipo.Enemigo);
         		    	}else {
-        		    		enemigoActual = fabrica.crearHechicero(Tipo.Enemigo);
+        		    		atacante = fabrica.crearHechicero(Tipo.Enemigo);
         		    	}
-        		    	enemigoActual.setEstado(new Paralizado());
+        		    	atacante.setEstado(new Paralizado());
         				 
         			}
         		}

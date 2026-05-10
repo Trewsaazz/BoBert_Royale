@@ -1,14 +1,19 @@
 package DinamicaJuego;
 
 import Personajes.Enemigo;
-import Personajes.IFabricaEnemigos;
+import Personajes.FabricaCharca;
+import Personajes.FabricaEnemigos;
+import Personajes.FabricaEspacial;
+import Personajes.FabricaMedieval;
+import Personajes.Tipo;
+
 import java.util.Scanner;
 import java.util.Random;
 
 public class GameController {
 	private Enemigo jugador;
     private Enemigo enemigoActual;
-    private IFabricaEnemigos fabrica;
+    private FabricaEnemigos fabrica;
     private String mundoActual;
     private boolean enCombate;
     private Scanner scanner;
@@ -20,6 +25,7 @@ public class GameController {
     public void iniciarPartida() {
     	//inicio de partida
     	System.out.println("=== NUEVA PARTIDA ===");
+    	/*
         System.out.print("Nombre de tu Jugador: ");
         String nombre = scanner.nextLine();
         
@@ -32,9 +38,11 @@ public class GameController {
         System.out.print("Agilidad: ");
         int agilidad = scanner.nextInt();
         scanner.nextLine();
-        
+        */
+    	
+    	
         //el Creador de player en Enemigo(el nombre del Player, la vida, Fuerza, Resistencia, Agilidad, Puntos)
-        jugador = new Enemigo(nombre, 100, fuerza, resistencia, agilidad, 0);
+        jugador = new Enemigo(Tipo.Jugador);
         
         //eleccion de Mundos par ver de donde son los enemigos
         System.out.println("\nElige un mundo: \n1-Charca\n2-Medieval\n3-Espacio");
@@ -44,21 +52,21 @@ public class GameController {
         switch(opcMundo){
         	case 1:
         		mundoActual = "Charca";
-        		fabrica = new FabricaEnemigoCharca;
+        		fabrica = new FabricaCharca();
         		break;
         	case 2:
         		mundoActual = "Medieval";
-        		fabrica = new FabricaEnemigoMedieval;
+        		fabrica = new FabricaMedieval();
         		break;
         	case 3:
         		mundoActual = "Espacio";
-        		fabrica = new FabricaEnemigoEspacio;
+        		fabrica = new FabricaEspacial();
         		break;
         	//si pones un numero no seleccionado te pines por defecto en medieval
         	default:
         		System.out.println("\nElegiste una mundo inexistente, Por defecto sera Medieval");
         		mundoActual = "Medieval";
-        		fabrica = new FabricaEnemigoMedieval;
+        		fabrica = new FabricaMedieval();
         }
         
         System.out.println("\nComienza la aventura en " + mundoActual + "");
@@ -73,18 +81,20 @@ public class GameController {
     		return;
     	}
     	
+    	Tipo clase = Tipo.Enemigo;
+    	
     	//selecciona si aleatoriamente 
     	Random rand = new Random();
     	int tipo = rand.nextInt(3);
     	switch (tipo) {
 	        case 0:
-	            enemigoActual = fabrica.crearGuerrero();
+	            enemigoActual = fabrica.crearGuerrero(clase);
 	            break;
 	        case 1:
-	            enemigoActual = fabrica.crearHechicero();
+	            enemigoActual = fabrica.crearHechicero(clase);
 	            break;
 	        case 2:
-	            enemigoActual = fabrica.crearMutante();
+	            enemigoActual = fabrica.crearMutante(clase);
 	            break;
 	    }
     	System.out.println("-- Inciativa--");
@@ -187,7 +197,7 @@ public class GameController {
     }
     
     public void finPartida() {
-        System.out.println("\n=== GAME OVER ===");
+        System.out.println("\n--- GAME OVER ---");
         System.out.println("Puntuación final: " + jugador.getPuntos());
         System.out.println("Gracias por jugar.");
         System.exit(0);

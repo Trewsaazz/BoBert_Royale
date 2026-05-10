@@ -3,6 +3,6 @@ import Acciones.*;
 import Personajes.Enemigo;
 
 public interface IEstrategia {
-	public Accion DecidirAccion(Enemigo enemigo, Enemigo jugador);
+	public int DecidirAccion(Enemigo enemigo, Enemigo jugador);
 	
 }

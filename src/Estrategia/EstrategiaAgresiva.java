@@ -8,7 +8,7 @@ public class EstrategiaAgresiva implements IEstrategia{
 	
 	@Override
 	public Accion elegirAccion(Enemigo enemigo, Jugador jugador) {
-		int numero = random.nextInt(100) - 1; /*Numero aleatorios de 0 a 100*/
+		int numero = random.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
 		
 		if(numero <= 70) {
 			return new Atacar();

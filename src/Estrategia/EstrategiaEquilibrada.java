@@ -2,7 +2,7 @@ package Estrategia;
 
 import java.util.Random;
 
-import Acciones.*;
+
 import Personajes.*;
 
 public class EstrategiaEquilibrada implements IEstrategia{

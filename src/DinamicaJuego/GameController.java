@@ -149,7 +149,7 @@ public class GameController {
         		if(enemigoActual.getEstado().puedeActuar() == true) {
         		
         		System.out.println("\nTurno Enemigo");
-        		decision = (rand.nextInt(3) +1);
+        		decision = enemigoActual.decidirSiguienteAccion(jugador);
         		Turno(turnoJugador, decision);
         		}else {
         			System.out.println("Estas "+enemigoActual.getEstado().toString()+"no has podido atacar!");

@@ -57,18 +57,18 @@ public class GameController {
         
         //te crea tu player segun tu clase y tu mundo
         switch (opcClase) {
-	        case 0:
+	        case 1:
 	            jugador = fabrica.crearGuerrero(Tipo.Jugador);
 	            break;
-	        case 1:
+	        case 2:
 	            jugador = fabrica.crearHechicero(Tipo.Jugador);
 	            break;
-	        case 2:
+	        case 3:
 	            jugador = fabrica.crearMutante(Tipo.Jugador);
 	            break;
 	        default:
 	        	System.out.println("\nElegiste una clase inexistente, Por defecto sera Guerrero");
-	        	enemigoActual = fabrica.crearGuerrero(Tipo.Jugador);
+	        	jugador = fabrica.crearGuerrero(Tipo.Jugador);
 	    }
         
         System.out.println("\nComienza la aventura en " + mundoActual + "");

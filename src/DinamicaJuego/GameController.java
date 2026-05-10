@@ -147,7 +147,7 @@ public class GameController {
         	}else {
         		
         		System.out.println("\nTurno Enemigo");
-        		decision = (rand.nextInt(3) +1);
+        		decision = enemigoActual.decidirSiguienteAccion(jugador);
         		Turno(turnoJugador, decision);
         		if(jugador.getVida()<=0) {
         			enCombate = false;

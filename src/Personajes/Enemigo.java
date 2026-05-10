@@ -63,22 +63,22 @@ public abstract class Enemigo {
 	}
 	
 	
-	public final Accion decidirSiguienteAccion(Enemigo jugador) {
+	public final int decidirSiguienteAccion(Enemigo jugador) {
 		prepararDecision();
 
-		Accion accion = estrategia.DecidirAccion(this, jugador);
+		int decision = estrategia.DecidirAccion(this, jugador);
 
-		accion = adaptarAccionSegunTipo(accion);
+		decision = adaptarAccionSegunTipo(decision);
 
-		return accion;
+		return decision;
 	}
 
 	protected void prepararDecision() {
 		System.out.println("El enemigo analiza la situación...");
 	}
 
-	protected Accion adaptarAccionSegunTipo(Accion accion) {
-		return accion;
+	protected int adaptarAccionSegunTipo(int decision) {
+		return decision;
 	}
 
 	public Accion habilidad() {

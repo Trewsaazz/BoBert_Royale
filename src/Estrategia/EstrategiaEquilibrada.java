@@ -21,4 +21,5 @@ public class EstrategiaEquilibrada implements IEstrategia{
 		}else {
 			return 3;
 		}
+	}
 }

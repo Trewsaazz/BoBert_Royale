@@ -1,18 +1,37 @@
 package Estrategia;
 
 import java.util.Random;
-
+/* Faltan imports */
 public class EstrategiaEquilibrada implements IEstrategia{
 	
 	
+	private Random numRandom = new Random();
 	
-	public EAccion DecidirAccion() {
-		Random r = new Random();
-		if (r.nextFloat() < 0.5f)
-		{
-			return EAccion.ATACAR;
+	@Override
+	public Accion elegirAccion(Enemigo enemigo, Jugador jugador) {
+		int numRandom = random.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
+		
+		if(numRandom <= 50) {
+			return new Atacar();
+		}else if(numRandom <= 80) {
+			return new Defender();
+		}else {
+			return new Curarse();
 		}
-		return EAccion.CURAR;
+	}
+	
+	@Override
+	public double getProbabilidadDeCritico() {
+		return 0.20;
+	}
+	
+	@Override
+	public double getBonusDefensa() {
+		return 0.20;
+	}
+	@Override
+	public double getBonusCura() {
+		return 0.10;
 	}
 
 }

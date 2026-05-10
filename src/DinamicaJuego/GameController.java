@@ -25,30 +25,17 @@ public class GameController {
     public void iniciarPartida() {
     	//inicio de partida
     	System.out.println("=== NUEVA PARTIDA ===");
-    	/*
-        System.out.print("Nombre de tu Jugador: ");
-        String nombre = scanner.nextLine();
         
-        //dar Stats a tu Jugador
-        System.out.println("Define tus atributos:");
-        System.out.print("Fuerza: ");
-        int fuerza = scanner.nextInt();
-        System.out.print("Resistencia: ");
-        int resistencia = scanner.nextInt();
-        System.out.print("Agilidad: ");
-        int agilidad = scanner.nextInt();
-        scanner.nextLine();
-        */
-    	
-    	
-        //el Creador de player en Enemigo(el nombre del Player, la vida, Fuerza, Resistencia, Agilidad, Puntos)
-        jugador = new Enemigo(Tipo.Jugador);
         
         //eleccion de Mundos par ver de donde son los enemigos
         System.out.println("\nElige un mundo: \n1-Charca\n2-Medieval\n3-Espacio");
         int opcMundo = scanner.nextInt();
         scanner.nextLine();
+        System.out.println("\nElige tu Clase: \n1-Guerrero\n2-Hechizero\n3-Mutante");
+        int opcClase = scanner.nextInt();
+		scanner.nextLine();
         
+		
         switch(opcMundo){
         	case 1:
         		mundoActual = "Charca";
@@ -68,6 +55,21 @@ public class GameController {
         		mundoActual = "Medieval";
         		fabrica = new FabricaMedieval();
         }
+        
+        switch (opcClase) {
+	        case 0:
+	            enemigoActual = fabrica.crearGuerrero(Tipo.Jugador);
+	            break;
+	        case 1:
+	            enemigoActual = fabrica.crearHechicero(Tipo.Jugador);
+	            break;
+	        case 2:
+	            enemigoActual = fabrica.crearMutante(Tipo.Jugador);
+	            break;
+	        default:
+	        	System.out.println("\nElegiste una clase inexistente, Por defecto sera Guerrero");
+	        	enemigoActual = fabrica.crearGuerrero(Tipo.Jugador);
+	    }
         
         System.out.println("\nComienza la aventura en " + mundoActual + "");
         Combate();

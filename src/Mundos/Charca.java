@@ -1,6 +1,8 @@
 package Mundos;
 
-public class Charca {
+public class Charca implements Mundo{
+	
+	@Override
 	public String toString() {
 		return "Charca Chorreante";
 	}

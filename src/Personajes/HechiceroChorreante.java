@@ -4,12 +4,18 @@ import java.util.Random;
 
 import Acciones.*;
 import Estrategia.EstrategiaDefensiva;
+import Mundos.*;
 
 public class HechiceroChorreante extends Enemigo{
 
+	private Mundo mundo;
+	private TipoEnemigo tipoEnemigo;
+	
 	public HechiceroChorreante(Tipo creacion) {
 		super(creacion);
 		setEstrategia(new EstrategiaDefensiva());
+		this.mundo = new Charca();
+		this.tipoEnemigo = tipoEnemigo.HECHICERO;
 	}
 
 	@Override
@@ -30,5 +36,10 @@ public class HechiceroChorreante extends Enemigo{
 		}
 		
 		return action;
+	}
+	@Override
+	public String toString() {
+		
+		return tipoEnemigo.toString() + "del mundo " + mundo.toString() + ".\n";
 	}
 }

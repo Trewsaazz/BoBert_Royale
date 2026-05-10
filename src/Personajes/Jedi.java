@@ -5,12 +5,18 @@ import java.util.Random;
 import Acciones.*;
 import Estrategia.EstrategiaDefensiva;
 import Estrategia.EstrategiaEquilibrada;
+import Mundos.*;
 
 public class Jedi extends Enemigo{
 
+	private Mundo mundo;
+	private TipoEnemigo tipoEnemigo;
+	
 	public Jedi(Tipo creacion) {
 		super(creacion);
 		setEstrategia(new EstrategiaDefensiva());
+		this.mundo = new Espacio();
+		this.tipoEnemigo = tipoEnemigo.HECHICERO;
 	}
 
 	@Override
@@ -30,5 +36,10 @@ public class Jedi extends Enemigo{
 		}
 		
 		return null;
+	}
+	@Override
+	public String toString() {
+		
+		return tipoEnemigo.toString() + "del mundo " + mundo.toString() + ".\n";
 	}
 }

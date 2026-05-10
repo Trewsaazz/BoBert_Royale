@@ -2,7 +2,7 @@ package EstadosPersonajes;
 
 import Personajes.Enemigo;
 
-public class Quemado {
+public class Quemado Estado{
 	int turnosRestantes = 3;
 	public void alIniciarTurno(Enemigo p) {
 		p.recibirDano(7);  // pierde 5 de vida por la quemadura

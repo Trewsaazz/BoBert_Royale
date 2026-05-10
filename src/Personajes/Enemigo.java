@@ -17,7 +17,7 @@ public abstract class Enemigo {
 	private int vida = 100;
 	
 	private Estado estado;
-	private IEstrategia estrategia;
+	IEstrategia estrategia;
 	
 	
 	
@@ -63,7 +63,10 @@ Scanner sc = new Scanner(System.in);
 	}
 	public void atacar() {
 		
-		System.out.println("He atacado al enemigo");
+		estado.alIniciarTurno(this);
+		if(estado.puedeActuar()== true) {
+			System.out.println("Atacando"); //añadir funcion de atacar
+		}
 	}
 
 	public void descansar() {

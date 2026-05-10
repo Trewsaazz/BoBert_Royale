@@ -2,8 +2,9 @@ package EstadosPersonajes;
 
 import Personajes.Enemigo;
 
-public class Envenenado {
+public class Envenenado implements Estado{
 	int turnosRestantes = 3;
+	
 	public void alIniciarTurno(Enemigo p) {
 		p.recibirDano(3);  // pierde 3 de vida por el veneno
         turnosRestantes--;

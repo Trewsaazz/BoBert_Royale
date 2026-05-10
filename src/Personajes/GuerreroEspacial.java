@@ -1,9 +1,12 @@
 package Personajes;
 
+import Estrategia.EstrategiaEquilibrada;
+
 public class GuerreroEspacial extends Enemigo{
 	
 	public GuerreroEspacial(Tipo creacion) {
 		super(creacion);
+		estrategia = new EstrategiaEquilibrada();
 	}
 
 	@Override

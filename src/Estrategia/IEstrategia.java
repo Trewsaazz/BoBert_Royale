@@ -1,8 +1,8 @@
 package Estrategia;
-/* Faltan imports */
+import Acciones.*;
+import Personajes.Enemigo;
+
 public interface IEstrategia {
-	/*public Accion DecidirAccion(Enemigo enemigo, Jugador jugador);*/
-	double getProbabilidadDeCritico();
-	double getBonusDefensa();
-	double getBonusCura();
+	public Accion DecidirAccion(Enemigo enemigo, Enemigo jugador);
+	
 }

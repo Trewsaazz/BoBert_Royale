@@ -7,7 +7,7 @@ public class GuerreroMedieval extends Enemigo{
 	
 	public GuerreroMedieval(Tipo creacion) {
 		super(creacion);
-		estrategia = new EstrategiaEquilibrada();
+		setEstrategia(new EstrategiaEquilibrada());
 	}
 
 	@Override

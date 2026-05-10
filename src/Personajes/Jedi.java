@@ -3,13 +3,14 @@ package Personajes;
 import java.util.Random;
 
 import Acciones.*;
+import Estrategia.EstrategiaDefensiva;
 import Estrategia.EstrategiaEquilibrada;
 
 public class Jedi extends Enemigo{
 
 	public Jedi(Tipo creacion) {
 		super(creacion);
-		estrategia = new EstrategiaEquilibrada();
+		setEstrategia(new EstrategiaDefensiva());
 	}
 
 	@Override

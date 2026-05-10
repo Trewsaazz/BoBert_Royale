@@ -9,7 +9,7 @@ public class HechiceroMedieval extends Enemigo{
 
 	public HechiceroMedieval(Tipo creacion) {
 		super(creacion);
-		estrategia = new EstrategiaDefensiva();
+		setEstrategia(new EstrategiaDefensiva());
 	}
 
 	@Override

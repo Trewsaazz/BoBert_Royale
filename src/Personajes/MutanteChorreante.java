@@ -4,13 +4,14 @@ import java.util.Random;
 
 import Acciones.*;
 import Estrategia.EstrategiaAgresiva;
+import Estrategia.EstrategiaDefensiva;
 
 public class MutanteChorreante extends Enemigo{
 
 	
 	public MutanteChorreante(Tipo creacion) {
 		super(creacion);
-		estrategia = new EstrategiaAgresiva();
+		setEstrategia(new EstrategiaDefensiva());
 	}
 
 	@Override

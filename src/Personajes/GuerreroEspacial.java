@@ -7,7 +7,7 @@ public class GuerreroEspacial extends Enemigo{
 	
 	public GuerreroEspacial(Tipo creacion) {
 		super(creacion);
-		estrategia = new EstrategiaEquilibrada();
+		setEstrategia(new EstrategiaEquilibrada());
 	}
 
 	@Override

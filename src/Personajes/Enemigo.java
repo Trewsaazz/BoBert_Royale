@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import Acciones.*;
 import EstadosPersonajes.*;
-
 import Estrategia.*;
 
 
@@ -18,7 +17,7 @@ public abstract class Enemigo {
 	private Accion acciones;
 
 	private Estado estado;
-	IEstrategia estrategia;
+	private IEstrategia estrategia;
 	
 	
 	
@@ -63,12 +62,30 @@ public abstract class Enemigo {
 		
 	}
 	
+	
+	public final Accion decidirSiguienteAccion(Enemigo jugador) {
+		prepararDecision();
+
+		Accion accion = estrategia.DecidirAccion(this, jugador);
+
+		accion = adaptarAccionSegunTipo(accion);
+
+		return accion;
+	}
+
+	protected void prepararDecision() {
+		System.out.println("El enemigo analiza la situación...");
+	}
+
+	protected Accion adaptarAccionSegunTipo(Accion accion) {
+		return accion;
+	}
+
 	public Accion habilidad() {
-		
 		System.out.println("No tienes habilidades especiales");
 		return null;
 	}
-
+	
 	public Estado getEstado() {
 		return estado;
 	}
@@ -132,6 +149,14 @@ public abstract class Enemigo {
 	
 	public void quitarVidaSimple(int v) {
 		vida = vida-v;
+	}
+	
+	public IEstrategia getEstrategia() {
+		return estrategia;
+	}
+
+	public void setEstrategia(IEstrategia estrategia) {
+		this.estrategia = estrategia;
 	}
 	
 }

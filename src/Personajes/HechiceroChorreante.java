@@ -9,7 +9,7 @@ public class HechiceroChorreante extends Enemigo{
 
 	public HechiceroChorreante(Tipo creacion) {
 		super(creacion);
-		estrategia = new EstrategiaDefensiva();
+		setEstrategia(new EstrategiaDefensiva());
 	}
 
 	@Override

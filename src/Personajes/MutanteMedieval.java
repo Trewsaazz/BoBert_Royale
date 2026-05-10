@@ -9,7 +9,7 @@ public class MutanteMedieval extends Enemigo{
 	
 	public MutanteMedieval(Tipo creacion) {
 		super(creacion);
-		estrategia = new EstrategiaDefensiva();
+		setEstrategia(new EstrategiaDefensiva());
 	}
 
 	@Override

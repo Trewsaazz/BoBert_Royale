@@ -1,30 +1,33 @@
 package Estrategia;
 
 import java.util.Random;
-/* Faltan imports */
+
+import Acciones.*;
+import Personajes.*;
+
+
 public class EstrategiaAgresiva implements IEstrategia{
 	
 	private Random numRandom = new Random();
 	
 	@Override
-	public Accion elegirAccion(Enemigo enemigo, Jugador jugador) {
-		int numero = random.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
+	public Accion DecidirAccion(Enemigo enemigo, Enemigo jugador) {
+		int numero = numRandom.nextInt(100) + 1; /*Numero aleatorios de 1 a 100*/
 		
-		if(numero <= 70) {
-			return new Atacar();
+		if(numero <= 75) {
+			return new Ataque();
+		}else if(numero <= 90 ){
+			return new Defensa();
 		}else {
-			return new Defender();
+		
+		Accion habilidad = enemigo.habilidad();
+		
+			if(habilidad != null) {
+				return habilidad;
+			}
+		
+		return new Ataque();
 		}
-	}
-	
-	@Override
-	public double getProbabilidadDeCritico() {
-		return 0.40;
-	}
-	
-	@Override
-	public double getBonusDefensa() {
-		return 0.0; /*Returnea 0 porque la agresiva no puede tener bonus de defensa*/
 	}
 	
 	

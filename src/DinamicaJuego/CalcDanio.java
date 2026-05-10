@@ -22,5 +22,6 @@ public class CalcDanio {
 		}else {
 			return ans;
 		}
+		
 	}
 }

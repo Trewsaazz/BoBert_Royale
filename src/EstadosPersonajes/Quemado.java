@@ -1,8 +1,10 @@
 package EstadosPersonajes;
 
+import Personajes.Enemigo;
+
 public class Quemado {
 	int turnosRestantes = 3;
-	public void alIniciarTurno(Personaje p) {
+	public void alIniciarTurno(Enemigo p) {
 		p.recibirDano(7);  // pierde 5 de vida por la quemadura
         turnosRestantes--;
         if (turnosRestantes <= 0) {

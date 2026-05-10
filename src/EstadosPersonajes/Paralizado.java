@@ -1,9 +1,11 @@
 package EstadosPersonajes;
 
+import Personajes.Enemigo;
+
 public class Paralizado implements Estado{
 
 	@Override
-	public void alIniciarTurno(Personaje p) {
+	public void alIniciarTurno(Enemigo p) {
 		//llamar a metodo relevante
 		
 	}

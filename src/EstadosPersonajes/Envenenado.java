@@ -1,8 +1,10 @@
 package EstadosPersonajes;
 
+import Personajes.Enemigo;
+
 public class Envenenado {
 	int turnosRestantes = 3;
-	public void alIniciarTurno(Personaje p) {
+	public void alIniciarTurno(Enemigo p) {
 		p.recibirDano(3);  // pierde 3 de vida por el veneno
         turnosRestantes--;
         if (turnosRestantes <= 0) {

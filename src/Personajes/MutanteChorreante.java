@@ -14,7 +14,7 @@ public class MutanteChorreante extends Enemigo{
 	
 	public MutanteChorreante(Tipo creacion) {
 		super(creacion);
-		setEstrategia(new EstrategiaDefensiva());
+		setEstrategia(new EstrategiaAgresiva());
 		this.mundo = new Charca();
 		this.tipoEnemigo = tipoEnemigo.MUTANTE;
 	}

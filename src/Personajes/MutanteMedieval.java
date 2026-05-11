@@ -1,7 +1,7 @@
 package Personajes;
 
 import Acciones.*;
-import Estrategia.EstrategiaDefensiva;
+import Estrategia.*;
 import Mundos.*;
 
 public class MutanteMedieval extends Enemigo{
@@ -10,7 +10,7 @@ public class MutanteMedieval extends Enemigo{
 	private TipoEnemigo tipoEnemigo;
 	public MutanteMedieval(Tipo creacion) {
 		super(creacion);
-		setEstrategia(new EstrategiaDefensiva());
+		setEstrategia(new EstrategiaAgresiva());
 		this.mundo = new Medieval();
 		this.tipoEnemigo = tipoEnemigo.MUTANTE;
 	}
